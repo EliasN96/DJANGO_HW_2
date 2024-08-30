@@ -1,0 +1,11 @@
+/.venv
+.idea
+/.venv/Lib
+/.venv/Scripts
+.coverage
+__pycache__/
+env
+env/Lib
+env/Include
+env/Scripts
+env/pyvenv.cfg

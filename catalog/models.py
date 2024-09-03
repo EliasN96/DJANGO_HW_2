@@ -21,6 +21,7 @@ class Product(models.Model):
         verbose_name='Стоимость')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    manufactured_at = models.DateField(auto_created=True, **NULLABLE)
 
     class Meta:
         verbose_name = 'Продукт'

@@ -1,16 +1,18 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 
+NULLABLE = {'blank': True, 'null': True}
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование', help_text='Введите название')
     description = models.TextField(verbose_name='Описание', help_text='Введите описание')
     photo = models.ImageField(
         upload_to='product/photo',
-        blank=True,
-        null=True,
         verbose_name='Фото',
-        help_text='Загрузите изображение продукта')
+        help_text='Загрузите изображение продукта',
+        **NULLABLE
+    )
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='Категория')
     price = models.IntegerField(
         validators=[MinValueValidator(1)],

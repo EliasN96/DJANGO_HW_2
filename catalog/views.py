@@ -10,5 +10,6 @@ def contacts(request):
 
     return render(request, 'contacts.html')
 
+
 def home(request):
     return render(request, 'home.html')

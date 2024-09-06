@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def json_read_categories():
         # Открываем файл с фикстурами категорий и загружаем данные в формате
         # JSON
-        with open('fixtures/categories.json', 'r', encoding='utf-8') as file:
+        with open("fixtures/categories.json", 'r', encoding='UTF-8') as file:
             categories = json.load(file)
         return categories
 
@@ -19,7 +19,7 @@ class Command(BaseCommand):
     def json_read_products():
         # Открываем файл с фикстурами продуктов и загружаем данные в формате
         # JSON
-        with open('fixtures/products.json', 'r', encoding='utf-8') as file:
+        with open("fixtures/products.json", 'r', encoding='UTF-8') as file:
             products = json.load(file)
         return products
 
@@ -55,7 +55,7 @@ class Command(BaseCommand):
                     name=product['fields']['name'],
                     description=product['fields']['description'],
                     price=product['fields']['price'],
-                    image=product['fields']['image'],
+                    image=product['fields']['photo'],
                     created_at=product['fields']['created_at'],
                     updated_at=product['fields']['updated_at'],
                     category=Category.objects.get(pk=category['pk']),

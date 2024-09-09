@@ -7,26 +7,21 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for product in products %}
+            {% for product in product_list %}
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{{ product.photo | media_filter }}" class="img-fluid">
                     <div class="card-body">
-                        <p class="card-text text-center">{{ product.name }}</p>
-                        <p class="card-text">Описание: {{ product.description|truncatewords:20|truncatechars:100 }}</p>
-                        <p class="card-text">Категория: {{ product.category }}</p>
-                        <p class="card-text">Цена: {{ product.price }} рублей</p>
+                        <h1 class="display-4 text-center mb-3">{{ product.name }}</h1>
+                        <img src="{{ product.photo | media_filter }}" class="img-fluid">
+                        <h4 class="text-center m-4">Цена: {{ product.price }} рублей</h4>
                         <div class="d-grid gap-2 col-10 mx-auto">
-                            <a type="button"
-                               class="btn btn-lg btn-block btn-success">Купить</a>
+                            <a type="button" class="btn btn-lg btn-block btn-success">Купить</a>
                         </div>
                         <div class="d-grid gap-2 col-10 mx-auto mt-3">
                             <a href="{% url 'catalog:product_detail' product.pk %}" type="button"
                                class="btn btn-lg btn-block btn-primary">Подробнее</a>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-
-
                         </div>
                     </div>
                 </div>

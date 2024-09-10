@@ -7,7 +7,7 @@ from catalog.models import Product
 
 class ProductListView(ListView):
     model = Product
-    template_name = 'catalog/product_list.html'
+    template_name = 'catalog/blog_list.html'
 
 
 class ProductDetailView(DetailView):
@@ -51,4 +51,4 @@ class HomeView(TemplateView):
 #     context = {
 #         "products": products
 #     }
-#     return render(request, 'product_list.html', context)
+#     return render(request, 'blog_list.html', context)

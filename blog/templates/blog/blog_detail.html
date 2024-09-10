@@ -9,9 +9,10 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{{ blog.media | media_filter }}" class="img-fluid">
                     <div class="card-body">
-                        <h3 class="card-text text-center">{{ object.title }}</h3>
+                        <img src="{{ blog.media | media_filtering }}" class="img-fluid">
+                        <h2 class="card-text text-center">{{ object.title }}</h2>
+                        <p class="card-text">Содержимое: {{ object.body }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <a href="{% url 'blog:blog_edit' object.pk %}" type="button"
@@ -19,10 +20,10 @@
                                 <a href="{% url 'blog:blog_delete' object.pk %}" type="button"
                                    class="btn btn-sm btn-outline-danger">Удалить</a>
                             </div>
-                            <a href="{% url 'blog:blog_list' %}" type="button"
-                               class="btn btn-md btn-info">Вернуться</a>
                         </div>
-                        <figcaption class="blockquote-footer mt-3">
+                        <a href="{% url 'blog:blog_list' %}" style="float: right" type="button"
+                           class="btn btn-md btn-info">Назад</a>
+                        <figcaption style="float: down" class="blockquote-footer mt-4">
                             Создано: {{ object.created_at }}
                         </figcaption>
                     </div>

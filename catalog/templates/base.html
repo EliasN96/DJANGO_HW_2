@@ -163,11 +163,6 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Лучшие Гаджеты </h1>
         <p class="lead text-body-secondary">Мы продаем лучшие гаджеты. Поможем подобрать, то что Вам нужно!</p>
-        <p>
-          <a href="{% url 'catalog:home' %}" class="btn btn-primary my-2">Главная</a>
-          <a href="{% url 'catalog:product_list' %}" class="btn btn-success my-2">Наши товары</a>
-          <a href="{% url 'catalog:contacts' %}" class="btn btn-info my-2">Контакты</a>
-        </p>
       </div>
     </div>
   </section>
@@ -182,7 +177,9 @@
     <p class="float-end mb-1">
       <a href="#">Вернуться наверх</a>
     </p>
-    <p class="mb-1">Контактный номер: +7(999)888-77-55</p>
+    <p><a href="{% url 'catalog:home' %}" class="text-outline-primary">Вернуться на главную страницу</a></p>
+    <p><a href="{% url 'blog:blog_list' %}" class="text-outline-primary">Наш Блог</a></p>
+    <p><a href="{% url 'catalog:contacts' %}" class="text-outline-info">Обратная связь</a></p>
     <p class="mb-0">&copy; Лучшие Гаджеты 2024</p>
   </div>
 </footer>

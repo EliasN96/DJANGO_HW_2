@@ -9,3 +9,4 @@ env/Lib
 env/Include
 env/Scripts
 env/pyvenv.cfg
+/media

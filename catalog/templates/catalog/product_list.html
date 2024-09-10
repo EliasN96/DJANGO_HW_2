@@ -2,12 +2,12 @@
 {% load my_tags %}
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Наша продукция</h1>
+    <h1 class="display-4">Наши товары</h1>
 </div>
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for product in product_list %}
+            {% for product in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">

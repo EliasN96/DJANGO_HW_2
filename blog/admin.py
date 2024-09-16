@@ -6,5 +6,6 @@ from blog.models import Blog
 
 
 @admin.register(Blog)
-class CategoryAdmin(admin.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
+    verbose_name = 'Блог'

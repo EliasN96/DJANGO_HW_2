@@ -6,25 +6,37 @@
 </div>
 <div class="album py-5 bg-body-tertiary">
     <div class="d-grid gap-2 col-2 mx-auto mb-4">
-        <a href="{% url 'catalog:product_create' %}" type="button" class="btn btn-lg btn-block btn-primary">Добавить продукт</a>
+        <a href="{% url 'catalog:product_create' %}" type="button" class="btn btn-lg btn-block btn-primary">Добавить
+            продукт</a>
     </div>
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for product in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h3 class="text-center m-2">{{ product.name }}</h3>
+                    </div>
                     <div class="card-body">
-                        <h1 class="display-4 text-center mb-3">{{ product.name }}</h1>
                         <img src="{{ product.photo | media_filter }}" class="img-fluid">
-                        <h4 class="text-center m-4">Цена: {{ product.price }} рублей</h4>
-                        <div class="d-grid gap-2 col-10 mx-auto">
+                        <h4 class="text-center m-3">Цена: {{ product.price }} рублей</h4>
+                        {% for version in product.versions.all %}
+                        {% if version.is_active %}
+                        <h4 class="text-center m-4">Версия: {{ version.version_name }} ({{ version.version_number }})</h4>
+                        {% else %}
+                        <h4 class="text-center m-4">Версия не активна</h4>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="d-flex justify-content-between align-items-center">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 col-10 m-2 mx-auto">
                             <a type="button" class="btn btn-lg btn-block btn-success">Купить</a>
                         </div>
-                        <div class="d-grid gap-2 col-10 mx-auto mt-3">
+                        <div class="d-grid gap-2 col-10 mx-auto m-2 mt-3">
                             <a href="{% url 'catalog:product_detail' product.pk %}" type="button"
                                class="btn btn-lg btn-block btn-primary">Подробнее</a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
                         </div>
                     </div>
                 </div>

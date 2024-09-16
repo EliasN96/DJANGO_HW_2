@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-lg-3 col-md-6 col-sm-12 m-3">
-    <div class="card mb-4 box-shadow">
-        <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="" class="form-floating">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="d-grid gap-2 col-10 mx-auto">
-                    {% if object %}
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Изменить</button>
-                    <a href="{% url 'blog:blog_view' object.pk %}" type="submit" class="btn btn-lg btn-block btn-danger mt-1">Отмена</a>
-                    {% else %}
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Создать</button>
-                    <a href="{% url 'blog:blog_list' %}" type="submit" class="btn btn-lg btn-block btn-danger mt-1">Назад</a>
-                    {% endif %}
+<div class="container">
+    <div class="col-12">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-grid gap-2 col-10 mx-auto">
+                            {% if object %}
+                            <button type="submit" class="btn btn-lg btn-block btn-success">Изменить</button>
+                            <a href="{% url 'blog:blog_view' object.pk %}" type="submit"
+                               class="btn btn-lg btn-block btn-danger mt-1">Отмена</a>
+                            {% else %}
+                            <button type="submit" class="btn btn-lg btn-block btn-success">Создать</button>
+                            <a href="{% url 'blog:blog_list' %}" type="submit"
+                               class="btn btn-lg btn-block btn-danger mt-1">Назад</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

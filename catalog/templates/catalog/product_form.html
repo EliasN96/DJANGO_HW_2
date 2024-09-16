@@ -1,22 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-lg-3 col-md-6 col-sm-12 m-3">
-    <div class="card mb-4 box-shadow">
-        <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="" class="form-floating">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="d-grid gap-2 col-10 mx-auto">
-                    {% if object %}
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Изменить</button>
-                    <a href="{% url 'catalog:product_detail' product.pk %}" type="submit" class="btn btn-lg btn-block btn-danger mt-1">Отмена</a>
-                    {% else %}
-                    <button type="submit" class="btn btn-lg btn-block btn-success">Создать</button>
-                    <a href="{% url 'catalog:product_list' %}" type="submit" class="btn btn-lg btn-block btn-danger mt-1">Назад</a>
-                    {% endif %}
+<div class="container">
+    <div class="col-12">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        {% if object %}
+                        <h3 class="card-title text-center">Изменить продукт</h3>
+                        {% else %}
+                        <h3 class="card-title text-center">Добавить продукт</h3>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if object %}
+                        <div class="d-grid gap-2 col-6 m-2 mx-auto">
+                            <button type="submit" class="btn btn-lg btn-block btn-success">Изменить</button>
+                        </div>
+                        {% else %}
+                        <div class="d-grid gap-2 col-6 m-2 mx-auto">
+                            <button type="submit" class="btn btn-lg  btn-center btn-success">Создать</button>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 col-6 m-2 mx-auto">
+                            {% if product %}
+                            <a href="{% url 'catalog:product_detail' product.pk %}" type="submit"
+                               class="btn btn-lg btn-block btn-danger mt-1">Отмена</a>
+                            {% else %}
+                            <a href="{% url 'catalog:product_list' %}" type="submit"
+                               class="btn btn-lg btn-block btn-danger mt-1">Отмена</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            {% if object %}
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">Версии продукта</h3>
+                    </div>
+                    <div class="card-body">
+                        {{ formset.management_form }}
+                        {% for form in formset.forms %}
+                        {{ form.as_p }}
+                        {% if not forloop.last %}
+                        <hr class="border border-success border-3 opacity-100">
+                        <hr class="border border-primary border-3 opacity-100">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2 col-6 m-2 mx-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </form>
     </div>
 </div>
 {% endblock %}

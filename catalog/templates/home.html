@@ -5,38 +5,36 @@
 </div>
 
 <div class="container">
-    <div class="row text-center">
-        <div class="col-4">
+    <div class="row">
+        <div class="col-6">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Наши товары</h4>
+                    <h1 class="my-0 font-weight-normal text-center">Наши товары</h1>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">Гаджеты</h1>
-                    <ul class="list-unstyled mt-3 mb-4 text-center m-3">
-                        <li>- Смартфоны</li>
-                        <li>- Планшеты</li>
-                        <li>- Ноутбуки</li>
-                        <li>- Персональные компьютеры</li>
-                    </ul>
-                    <div class="d-grid gap-2 col-10 mx-auto">
-                        <a href="{% url 'catalog:product_list' %}" type="button" class="btn btn-lg btn-block btn-success">Купить</a>
-                    </div>
+                    <h4 class="card-title pricing-card-title text-center">Смартфоны</h4>
+                    <h4 class="card-title pricing-card-title text-center">Планшеты</h4>
+                    <h4 class="card-title pricing-card-title text-center">Ноутбуки</h4>
+                    <h4 class="card-title pricing-card-title text-center">Персональные компьютеры</h4>
+                </div>
+                <div class="card_footer d-grid gap-2 col-10 mx-auto mb-3">
+                    <a href="{% url 'catalog:product_list' %}" type="button" class="btn btn-lg btn-block btn-success">Купить</a>
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-6">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Не нашли, то что искали?</h4>
+                    <h1 class="my-0 font-weight-normal text-center">Не нашли, то что искали?</h1>
                 </div>
-                <div class="card-body" >
-                    <h1 class="card-title pricing-card-title">Свяжитесь с нами</h1>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <a href="{% url 'catalog:contacts' %}" type="button" class="btn btn-lg btn-block btn-info">Контакты</a>
-                    </div>
+                <div class="card-body mt-5 mb-3" >
+                    <h1 class="card-title pricing-card-title text-center">Свяжитесь с нами</h1>
+                </div>
+                <div class="card_footer d-grid gap-2 col-6 mx-auto mb-3 mt-4">
+                    <a href="{% url 'catalog:contacts' %}" type="button" class="btn btn-lg btn-block btn-info">Контакты</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

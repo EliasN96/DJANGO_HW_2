@@ -1,4 +1,4 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, validate_comma_separated_integer_list
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
@@ -45,14 +45,15 @@ class Category(models.Model):
 
 
 class Version(models.Model):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
-    version_number = models.PositiveIntegerField(verbose_name='Номер версии')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт', **NULLABLE,
+                                related_name='versions')
+    version_number = models.CharField(max_length=50, verbose_name='Номер версии')
     version_name = models.CharField(max_length=100, **NULLABLE, verbose_name='Название версии')
-    is_version_active = models.BooleanField(default=True, verbose_name='Признак версии')
+    is_active = models.BooleanField(default=True, verbose_name='Признак версии')
 
     class Meta:
         verbose_name = 'Версия'
         verbose_name_plural = 'Версии'
 
     def __str__(self):
-        return f'{self.product} - {self.version_number}'
+        return self.version_number

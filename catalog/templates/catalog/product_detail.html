@@ -16,11 +16,14 @@
                         <img src="{{ product.photo | media_filter }}" class="img-fluid">
                         <h4 class="text-center m-4">Категория: {{ product.category }}</h4>
                         <h4 class="text-center m-4">Цена: {{ product.price }} рублей</h4>
+                        <figcaption class="blockquote-footer mt-3">
+                            Создатель записи: {{ owner.email }}</cite>
+                        </figcaption>
                         {% for version in product.versions.all %}
                         {% if version.is_active %}
-                        <h4 class="text-center m-4">Версия: {{ version.version_name }} ({{ version.version_number}})</h4>
-                        {% else %}
-                        <h4 class="text-center m-4">Версия не активна</h4>
+                        <figcaption class="blockquote-footer mt-3">
+                            Версия: {{ version.version_name }} ({{ version.version_number}})</cite>
+                        </figcaption>
                         {% endif %}
                         {% endfor %}
                         <div class="d-flex justify-content-between align-items-center">
@@ -53,6 +56,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                         </div>
                     </div>
+                    {% if perms.catalog.can_edit_product and perms.catalog.can_edit_category or user == product.owner %}
                     <div class="card-footer">
                         <div class="d-grid gap-2 col-10 mx-auto mt-3">
                             <a href="{% url 'catalog:product_update' product.pk %}" type="button"
@@ -63,6 +67,7 @@
                                class="btn btn-lg btn-block btn-danger mb-3">Удалить продукт</a>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

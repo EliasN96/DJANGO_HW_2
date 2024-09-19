@@ -6,6 +6,7 @@
 
 <div class="container">
     <div class="row">
+        {% if user.is_authenticated %}
         <div class="col-4">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -19,11 +20,13 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 col-10 m-2 mx-auto">
-                        <a href="{% url 'catalog:product_list' %}" type="button" class="btn btn-lg btn-block btn-success">Купить</a>
+                        <a href="{% url 'catalog:product_list' %}" type="button"
+                           class="btn btn-lg btn-block btn-success">Купить</a>
                     </div>
                 </div>
             </div>
         </div>
+        {% endif %}
         <div class="col-4">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -34,7 +37,8 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-grid gap-2 col-10 m-2 mx-auto">
-                        <a href="{% url 'blog:blog_list' %}" type="button" class="btn btn-lg btn-block btn-primary">Блог</a>
+                        <a href="{% url 'blog:blog_list' %}" type="button"
+                           class="btn btn-lg btn-block btn-primary">Блог</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +54,7 @@
                 <div class="card-footer">
                     <div class="d-grid gap-2 col-10 m-2 mx-auto">
                         <a href="{% url 'catalog:contacts' %}" type="button"
-                       class="btn btn-lg btn-block btn-info">Контакты</a>
+                           class="btn btn-lg btn-block btn-info">Контакты</a>
                     </div>
                 </div>
             </div>

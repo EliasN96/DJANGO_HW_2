@@ -1,5 +1,7 @@
-from django.core.validators import MinValueValidator, validate_comma_separated_integer_list
+from django.core.validators import MinValueValidator
 from django.db import models
+
+from users.models import User
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -21,6 +23,13 @@ class Product(models.Model):
         verbose_name='Стоимость')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    owner = models.ForeignKey(
+        User,
+        verbose_name='Пользователь',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = 'Продукт'
